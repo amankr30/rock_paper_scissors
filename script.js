@@ -10,6 +10,15 @@ function getComputerChoice() {
 
 const computerSelection = getComputerChoice();
 
+let playerScores=0;
+let computerScores=0;
+const maxScore=5;
+
+function updateScore(){
+    updateInnerDiv();
+innerdiv.innerText=`player:${playerScores} - computer:${computerScores}`
+}
+
 function updateInnerDiv(text){
     innerdiv.innerText=text;
 }
@@ -25,13 +34,28 @@ function playRound(playerSelection, computerSelection) {
   ) {
     console.log(`you win! ${playerSelection} beats ${computerSelection}`);
     
-    updateInnerDiv(`you win! ${playerSelection} beats ${computerSelection}`);
+    updateInnerDiv(`You win! ${playerSelection} beats ${computerSelection}`);
+        playerScores++;
   } else {
     console.log(` You lose! ${computerSelection} beats ${playerSelection}`);
     
-    updateInnerDiv( ` You lose! ${computerSelection} beats ${playerSelection}`);
+    updateInnerDiv ( ` You lose! ${computerSelection} beats ${playerSelection}`);
+    computerScores++;
   }
+
+  updateScore();
+
+  if (playerScores >= maxScore) {
+    updateInnerDiv("Player won the game!");
+  } else if (computerScores >= maxScore) {
+    updateInnerDiv("Computer won the game!");
+  }
+  
+
 }
+
+
+
 
 
 
